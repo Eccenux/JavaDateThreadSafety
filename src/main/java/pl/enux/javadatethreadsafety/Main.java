@@ -32,7 +32,7 @@ public class Main {
 	}
 
 	/**
-	 * Test SimpleDateFormat (non) thread-safety.
+	 * Test SimpleDateFormat.parse (non) thread-safety.
 	 *
 	 * Original code by `dogbane` (CC-BY-SA).
 	 * @see https://stackoverflow.com/a/4021932/333296
@@ -43,6 +43,7 @@ public class Main {
 		final DateFormat format = new SimpleDateFormat("yyyyMMdd");
 
 		Callable<Date> task = new Callable<Date>() {
+			@Override
 			public Date call() throws Exception {
 				return format.parse("20101022");
 			}
@@ -50,7 +51,7 @@ public class Main {
 
 		//pool with 5 threads
 		ExecutorService exec = Executors.newFixedThreadPool(5);
-		List<Future<Date>> results = new ArrayList<Future<Date>>();
+		List<Future<Date>> results = new ArrayList<>();
 
 		//perform 10 date conversions
 		for (int i = 0; i < 10; i++) {
@@ -63,6 +64,4 @@ public class Main {
 			System.out.println(result.get());
 		}
 	}
-
-
 }
