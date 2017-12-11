@@ -34,7 +34,7 @@ public class Main {
 	/**
 	 * Test SimpleDateFormat (non) thread-safety.
 	 *
-	 * Original code by `dogbane`.
+	 * Original code by `dogbane` (CC-BY-SA).
 	 * @see https://stackoverflow.com/a/4021932/333296
 	 * 
 	 * @throws Exception
