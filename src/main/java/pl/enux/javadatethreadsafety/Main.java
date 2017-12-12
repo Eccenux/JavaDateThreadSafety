@@ -97,7 +97,8 @@ public class Main {
 			}
 		};
 
-		//pool with 5 threads
+		//pool with X threads
+		// note that using more then CPU-threads will not give you a performance boost
 		ExecutorService exec = Executors.newFixedThreadPool(10);
 		List<Future<String>> results = new ArrayList<>();
 
