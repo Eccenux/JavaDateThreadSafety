@@ -87,6 +87,15 @@ public class Main {
 				return format.format(calendar.getTime());
 			}
 		};
+		Callable<String> task2 = new Callable<String>() {
+			@Override
+			public String call() throws Exception {
+				return String.format("%d-%02d-%d %d:%d:%d"
+					, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE)
+					, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND)
+				);
+			}
+		};
 
 		//pool with 5 threads
 		ExecutorService exec = Executors.newFixedThreadPool(5);
@@ -95,6 +104,7 @@ public class Main {
 		//perform 10 date conversions
 		for (int i = 0; i < 10; i++) {
 			results.add(exec.submit(task));
+			results.add(exec.submit(task2));
 		}
 		exec.shutdown();
 
