@@ -98,11 +98,11 @@ public class Main {
 		};
 
 		//pool with 5 threads
-		ExecutorService exec = Executors.newFixedThreadPool(5);
+		ExecutorService exec = Executors.newFixedThreadPool(10);
 		List<Future<String>> results = new ArrayList<>();
 
 		//perform 10 date conversions
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10000; i++) {
 			results.add(exec.submit(task));
 			results.add(exec.submit(task2));
 		}
